@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_provider/provider/counter_provider.dart';
 import 'package:test_provider/second_page.dart';
+import 'package:test_provider/third_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -77,7 +78,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(builder: (context) => const SecondPage()));
               },
               tooltip: 'Increment',
-              child: const Icon(Icons.arrow_forward_ios),
+              child: const Text('2'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ThirdPage()));
+              },
+              tooltip: 'Increment',
+              child: const Text('3'),
             ),
           ),
         ],
