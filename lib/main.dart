@@ -19,17 +19,17 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key,}) : super(key: key);
 
 
-  final String title;
+
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -39,10 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var counterProvider = Provider.of<Counter>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
       ),
       body: Center(
         child: Column(
@@ -52,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              counterProvider.counter.toString(),
+             context.watch<Counter>().counter.toString(),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -60,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          counterProvider.incrementCounter();
+          context.read<Counter>().incrementCounter();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
