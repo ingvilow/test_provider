@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_provider/provider/counter_provider.dart';
+import 'package:test_provider/third_page.dart';
 
+/*
+* вторая страница с провайдером, которая запоминает то, сколько раз на первой странице было инкременетирвоано значение
+* если на первой странице 6 раз, то и на этой тоже счетчик покажет 6 раз
+* */
 class SecondPage extends StatefulWidget {
   const SecondPage({Key? key}) : super(key: key);
 
@@ -35,6 +40,14 @@ class _SecondPageState extends State<SecondPage> {
               ),
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push<void>(
+              context,
+              MaterialPageRoute(builder: (context) => const ThirdPage()),
+            );
+          },
         ),
       ),
     );

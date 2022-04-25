@@ -2,6 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_provider/provider/counter_provider.dart';
+
+
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class ThirdPage extends StatefulWidget {
 class _ThirdPageState extends State<ThirdPage> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Third Page'),
@@ -20,10 +24,12 @@ class _ThirdPageState extends State<ThirdPage> {
       body: Column(
         children: [
           Text(
-            context.watch(),
+           provider.counter.toString(),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: (){
+             provider.incrementCounter();
+            },
             child: const Text('Increase'),
           ),
         ],

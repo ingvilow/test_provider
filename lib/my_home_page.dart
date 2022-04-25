@@ -5,6 +5,11 @@ import 'package:test_provider/provider/counter_provider.dart';
 import 'package:test_provider/second_page.dart';
 import 'package:test_provider/third_page.dart';
 
+
+
+//первая страница
+
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
     Key? key,
@@ -56,19 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               tooltip: 'Increment',
               child: const Text('2'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FloatingActionButton(
-              onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ThirdPage()),
-                );
-              },
-              tooltip: 'Increment',
-              child: const Text('3'),
             ),
           ),
         ],
