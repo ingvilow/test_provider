@@ -24,7 +24,7 @@ class _ThirdPageState extends State<ThirdPage> {
       body: Column(
         children: [
           Text(
-           context.watch<CounterProvider>().counter.toString(),
+         provider.counter.toString(),
           ),
           ElevatedButton(
             onPressed: (){
