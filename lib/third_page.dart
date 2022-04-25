@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+///третья страница
+
 //я не совсем поняла, что имелось ввиду: из другого файла же нельзя получить доступ к провайдеру.
 //На первом экране у меня провайдер объявлен поверх material app,
 //потом в my_home_page я использую final counterProvider = Provider.of<CounterProvider>(context);

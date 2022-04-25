@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 ///первая страница
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
