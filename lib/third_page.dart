@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_provider/provider/counter_provider.dart';
 
+/*
+* я не совсем поняла, что имелось ввиду: из другого файла же нельзя получить доступ к провайдеру.
+* На первом экране у меня провайдер объявлен поверх material app,
+* потом в my_home_page я использую final counterProvider = Provider.of<CounterProvider>(context);
+* имелось ввиду, смогу ли я на третьем экране получить как-то значения из этого  final counterProvider = Provider.of<CounterProvider>(context); ? */
 
 
 class ThirdPage extends StatefulWidget {
@@ -24,11 +29,11 @@ class _ThirdPageState extends State<ThirdPage> {
       body: Column(
         children: [
           Text(
-         provider.counter.toString(),
+            provider.counter.toString(),
           ),
           ElevatedButton(
-            onPressed: (){
-             context.watch<CounterProvider>().incrementCounter();
+            onPressed: () {
+              context.watch<CounterProvider>().incrementCounter();
             },
             child: const Text('Increase'),
           ),
