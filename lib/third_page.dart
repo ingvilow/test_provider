@@ -14,17 +14,20 @@ class _ThirdPageState extends State<ThirdPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Third Page'),
-        ),
-        body: Column(
-          children: [
-            Text(
-                context.watch()
-            ),
-            ElevatedButton(onPressed: (){
-            }, child: Text('Increase'))
-          ],
-        ));
+      appBar: AppBar(
+        title: const Text('Third Page'),
+      ),
+      body: Column(
+        children: [
+          Text(
+            context.watch(),
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Increase'),
+          ),
+        ],
+      ),
+    );
   }
 }
