@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_provider/provider/counter_provider.dart';
-
+import 'package:test_provider/second_page.dart';
+import 'package:test_provider/third_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Counter>(
-      create: (BuildContext context) {
+      create: (context) {
         return Counter();
       },
       child: MaterialApp(
@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+///первая страница
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
     Key? key,
@@ -42,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Page'),
+        title: const Text('First Page'),
       ),
       body: Center(
         child: Column(
@@ -72,9 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SecondPage()));
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondPage()),
+                );
               },
               tooltip: 'Increment',
               child: const Text('2'),
@@ -84,16 +87,17 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ThirdPage()));
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdPage()),
+                );
               },
               tooltip: 'Increment',
               child: const Text('3'),
             ),
           ),
         ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
