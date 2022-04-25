@@ -24,11 +24,11 @@ class _ThirdPageState extends State<ThirdPage> {
       body: Column(
         children: [
           Text(
-           provider.counter.toString(),
+           context.watch<CounterProvider>().counter.toString(),
           ),
           ElevatedButton(
             onPressed: (){
-             provider.incrementCounter();
+             context.watch<CounterProvider>().incrementCounter();
             },
             child: const Text('Increase'),
           ),
