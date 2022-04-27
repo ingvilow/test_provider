@@ -2,7 +2,7 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:test_provider/widgets/users_list_wm.dart';
 
-import '../models/user.dart';
+import 'package:test_provider/models/user.dart';
 
 class UsersListScreen extends ElementaryWidget<IUsersWM> {
   const UsersListScreen({

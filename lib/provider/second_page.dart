@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_provider/provider/counter_provider.dart';
-import 'package:test_provider/third_page.dart';
+import 'package:test_provider/provider/third_page.dart';
 
 /// вторая страница
 
-// вторая страница с провайдером, которая запоминает то, сколько раз на первой странице было инкременетирвоано значение
+// вторая страница с провайдером, которая запоминает то, сколько раз на первой странице было инкременетирвано значение
 // если на первой странице 6 раз, то и на этой тоже счетчик покажет 6 раз
 
 class SecondPage extends StatefulWidget {

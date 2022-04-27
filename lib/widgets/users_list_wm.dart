@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:test_provider/widgets/users_list_models.dart';
 import 'package:test_provider/widgets/users_list_screen.dart';
 
-import '../models/user.dart';
-import '../service/user_service.dart';
+import 'package:test_provider/models/user.dart';
+import 'package:test_provider/service/user_service.dart';
 
 class UsersListWM extends WidgetModel<UsersListScreen, UsersListModel>
     implements IUsersWM {
