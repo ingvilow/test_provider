@@ -1,5 +1,9 @@
 import 'Geo.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'Address.g.dart';
+
+@JsonSerializable()
 class Address {
   Address({
     this.street,
@@ -15,19 +19,8 @@ class Address {
   String? zipcode;
   late Geo geo;
 
-  factory Address.fromJson(Map<String, dynamic> json) => Address(
-        street: json["street"],
-        suite: json["suite"],
-        city: json["city"],
-        zipcode: json["zipcode"],
-        geo: Geo.fromJson(json["geo"]),
-      );
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
 
-  Map<String, Object?> toJson() => {
-        "street": street,
-        "suite": suite,
-        "city": city,
-        "zipcode": zipcode,
-        "geo": geo.toJson(),
-      };
+  Map<String, Object?> toJson() => _$AddressToJson(this);
 }

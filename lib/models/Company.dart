@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'Company.g.dart';
+
+@JsonSerializable()
 class Company {
   Company({
     this.name,
@@ -9,15 +14,7 @@ class Company {
   String? catchPhrase;
   String? bs;
 
-  factory Company.fromJson(Map<String, String> json) => Company(
-        name: json["name"],
-        catchPhrase: json["catchPhrase"],
-        bs: json["bs"],
-      );
+  factory Company.fromJson(Map<String, String> json) => _$CompanyFromJson(json);
 
-  Map<String, Object?> toJson() => {
-        "name": name,
-        "catchPhrase": catchPhrase,
-        "bs": bs,
-      };
+  Map<String, Object?> toJson() => _$CompanyToJson(this);
 }

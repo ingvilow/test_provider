@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'Geo.g.dart';
+
+@JsonSerializable()
 class Geo {
   Geo({
     this.lat,
@@ -7,13 +12,7 @@ class Geo {
   String? lat;
   String? lng;
 
-  factory Geo.fromJson(Map<String, String> json) => Geo(
-        lat: json["lat"],
-        lng: json["lng"],
-      );
+  factory Geo.fromJson(Map<String, String> json) => _$GeoFromJson(json);
 
-  Map<String, Object?> toJson() => {
-        "lat": lat,
-        "lng": lng,
-      };
+  Map<String, Object?> toJson() => _$GeoToJson(this);
 }
