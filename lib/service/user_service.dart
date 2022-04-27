@@ -6,6 +6,7 @@ import 'dart:io';
 const _baseUrl = 'https://jsonplaceholder.typicode.com';
 
 class ApiService {
+  //делает запрос к АПИ и достает оттуда юзеров
   Future<List<Users>?> fetchHero() async {
     final response = await http.get(Uri.parse('$_baseUrl/users'));
     var jsonResponse = convert.jsonDecode(response.body) as List;
