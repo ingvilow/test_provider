@@ -1,21 +1,24 @@
-import 'package:test_provider/models/user.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-import 'dart:io';
+
+import 'package:http/http.dart' as http;
+import 'package:test_provider/models/user.dart';
 
 const _baseUrl = 'https://jsonplaceholder.typicode.com';
 
 class ApiService {
   //делает запрос к АПИ и достает оттуда юзеров
-  Future<List<Users>?> fetchHero() async {
+  Future<List<Users>> fetchHero() async {
     final response = await http.get(Uri.parse('$_baseUrl/users'));
-    var jsonResponse = convert.jsonDecode(response.body) as List;
+    final jsonResponse = convert.jsonDecode(response.body) as List;
     if (response.statusCode == 200) {
-      return jsonResponse.map((e) => Users.fromJson(e)).toList();
+      return jsonResponse
+          .whereType<Map<String, Object?>>()
+          .map(Users.fromJson)
+          .toList();
     }
     if (response.statusCode == 404) {
-      return throw HttpStatus.notFound;
+      throw Exception('Error');
     }
-    return null;
+    throw Exception();
   }
 }

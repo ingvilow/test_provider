@@ -1,5 +1,5 @@
-import 'Geo.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:test_provider/models/Geo.dart';
 
 part 'Address.g.dart';
 
@@ -17,7 +17,7 @@ class Address {
   String? suite;
   String? city;
   String? zipcode;
-  late Geo geo;
+  Geo? geo;
 
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);

@@ -4,15 +4,15 @@ part 'Company.g.dart';
 
 @JsonSerializable()
 class Company {
+  String? name;
+  String? catchPhrase;
+  String? bs;
+
   Company({
     this.name,
     this.catchPhrase,
     this.bs,
   });
-
-  String? name;
-  String? catchPhrase;
-  String? bs;
 
   factory Company.fromJson(Map<String, String> json) => _$CompanyFromJson(json);
 

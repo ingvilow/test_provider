@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:test_provider/provider/counter_provider.dart';
 import 'package:test_provider/provider/second_page.dart';
 import 'package:test_provider/provider/third_page.dart';
+import 'package:test_provider/widgets/search_widget/search_screen.dart';
 import 'package:test_provider/widgets/users_list_screen.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const UsersListScreen(),
+        home: UsersListScreen(),
       ),
     );
   }
