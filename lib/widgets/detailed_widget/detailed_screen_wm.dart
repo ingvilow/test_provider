@@ -1,31 +1,31 @@
 import 'package:elementary/elementary.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:test_provider/models/user.dart';
 import 'package:test_provider/service/user_service.dart';
-import 'package:test_provider/widgets/search_widget/search_delegate.dart';
+import 'package:test_provider/widgets/detailed_widget/detailed_model.dart';
+import 'package:test_provider/widgets/detailed_widget/detailed_screen.dart';
 import 'package:test_provider/widgets/search_widget/search_model.dart';
-import 'package:test_provider/widgets/search_widget/search_screen.dart';
 
-class SearchUserWM extends WidgetModel<SearchScreen, SearchModel>
-    implements ISearchWidget {
-  SearchUserWM(SearchModel model) : super(model);
+class DetailedScreenWM extends WidgetModel<DetailedScreen, DetailedModel>
+    implements IDeatailedWidget {
+  DetailedScreenWM(DetailedModel model) : super(model);
   final EntityStateNotifier<List<Users>?> _currentUsers =
       EntityStateNotifier(null);
 
   @override
   ListenableState<EntityState<List<Users>?>> get usersList => _currentUsers;
-  int? id;
+
+  @override
   @override
   void initWidgetModel() {
     super.initWidgetModel();
-    _loadUsers(id!);
+    _loadUsers();
   }
 
-  Future<void> _loadUsers(int id) async {
+  Future<void> _loadUsers() async {
     try {
       _currentUsers.loading();
-      final users = await model.getUsersByName(id);
+      final users = await model.getDetailedUsers();
       _currentUsers.content(users);
     } on Exception catch (err) {
       _currentUsers.error(err);
@@ -33,12 +33,12 @@ class SearchUserWM extends WidgetModel<SearchScreen, SearchModel>
   }
 }
 
-abstract class ISearchWidget extends IWidgetModel {
+abstract class IDeatailedWidget extends IWidgetModel {
   ListenableState<EntityState<List<Users>?>> get usersList;
 }
 
-SearchUserWM createUsersScreenWM(BuildContext _) => SearchUserWM(
-      SearchModel(
+DetailedScreenWM createUsersScreenWM(BuildContext _) => DetailedScreenWM(
+      DetailedModel(
         ApiService(),
       ),
     );
