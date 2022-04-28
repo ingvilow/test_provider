@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:test_provider/models/user.dart';
 import 'package:test_provider/widgets/users_list_wm.dart';
 
-class UsersListScreen extends ElementaryWidget<IUsersWM> {
-  const UsersListScreen({
+class SearchScreen extends ElementaryWidget<IUsersWM> {
+  const SearchScreen({
     Key? key,
     WidgetModelFactory wmFactory = createUsersScreenWM,
   }) : super(wmFactory, key: key);
@@ -12,18 +12,11 @@ class UsersListScreen extends ElementaryWidget<IUsersWM> {
   @override
   Widget build(IUsersWM wm) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: wm.showSearchScreen,
-            icon: const Icon(Icons.search),
-          ),
-        ],
-      ),
+      appBar: AppBar(),
       body: EntityStateNotifierBuilder<List<Users>?>(
         listenableEntityState: wm.usersList,
         errorBuilder: (_, __, ___) {
-          return const Text('err');
+          return const Text('No result');
         },
         loadingBuilder: (_, __) {
           return const CircularProgressIndicator();
