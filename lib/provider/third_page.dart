@@ -30,16 +30,6 @@ class _ThirdPageState extends State<ThirdPage> {
       ),
       body: Column(
         children: [
-          /*  Consumer<Counter>(
-            builder: (ctx, value, child) {
-              if (kDebugMode) {
-                print('stop 1');
-              }
-              return Text(
-                value.counter.toString(),
-              );
-            },
-          ),*/
           Text(context.watch<Counter>().counter.toString()),
           ElevatedButton(
             onPressed: () {
