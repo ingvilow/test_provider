@@ -1,17 +1,17 @@
 import 'package:elementary/elementary.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_provider/models/user.dart';
+import 'package:test_provider/service/user_service.dart';
+import 'package:test_provider/widgets/detailed_widget/detailed_screen.dart';
 import 'package:test_provider/widgets/search_widget/search_delegate.dart';
 import 'package:test_provider/widgets/users_list_models.dart';
 import 'package:test_provider/widgets/users_list_screen.dart';
-import 'package:test_provider/models/user.dart';
-import 'package:test_provider/service/user_service.dart';
 
 class UsersListWM extends WidgetModel<UsersListScreen, UsersListModel>
     implements IUsersWM {
   final EntityStateNotifier<List<Users>?> _currentUsers =
       EntityStateNotifier(null);
-  SearchDelegateScreen searchDelegateScreen = SearchDelegateScreen();
+
   UsersListWM(
     UsersListModel model,
   ) : super(model);
@@ -35,9 +35,6 @@ class UsersListWM extends WidgetModel<UsersListScreen, UsersListModel>
     );
   }
 
-  // эта функция и загружает мне всех пользователей.
-  // До этого я думала, что достаточно того, что здесь UsersListModel
-  //не работало сначала из-за этого
   Future<void> _loadUsers() async {
     try {
       _currentUsers.loading();
@@ -46,6 +43,16 @@ class UsersListWM extends WidgetModel<UsersListScreen, UsersListModel>
     } on Exception catch (err) {
       _currentUsers.error(err);
     }
+  }
+
+  //переход на другую страницу для детальной информации
+  @override
+  void onTapById(Users users) {
+    Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (_) => DetailedScreen(
+        users: users,
+      ),
+    ));
   }
 }
 
@@ -59,4 +66,6 @@ abstract class IUsersWM extends IWidgetModel {
   ListenableState<EntityState<List<Users>?>> get usersList;
 
   void showSearchScreen();
+
+  void onTapById(Users users);
 }

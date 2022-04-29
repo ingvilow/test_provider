@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_provider/models/user.dart';
 import 'package:test_provider/provider/counter_provider.dart';
 import 'package:test_provider/provider/second_page.dart';
 import 'package:test_provider/provider/third_page.dart';
+import 'package:test_provider/widgets/detailed_widget/detailed_screen.dart';
 import 'package:test_provider/widgets/search_widget/search_screen.dart';
 import 'package:test_provider/widgets/users_list_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

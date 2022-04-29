@@ -1,20 +1,18 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/scheduler.dart';
-
 import 'package:test_provider/models/user.dart';
-
 import 'package:test_provider/service/user_service.dart';
 
-class UsersListModel extends ElementaryModel {
+class DetailedModel extends ElementaryModel {
   final ValueNotifier<List<Users>?> searchUsers = ValueNotifier([]);
-  final ApiService _apiService;
 
-  UsersListModel(
-    this._apiService,
-  );
+  final ApiService _searchService;
 
-  Future<List<Users>?> getUser() async {
-    return _apiService.fetchHero();
+  DetailedModel(this._searchService);
+
+  Future<List<Users>> getDetailedUsers() async {
+    return _searchService
+        .fetchHero()
+        .then((value) => searchUsers.value = value);
   }
 }

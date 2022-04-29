@@ -10,7 +10,9 @@ class SearchModel extends ElementaryModel {
 
   SearchModel(this._searchService);
 
-  Future<List<Users>?> getUsersByName() async {
-    return _searchService.fetchHero();
+  Future<List<Users>?> getUsersByName(int id) async {
+    return _searchService
+        .fetchHero()
+        .then((value) => value.where((element) => element.id == id).toList());
   }
 }
