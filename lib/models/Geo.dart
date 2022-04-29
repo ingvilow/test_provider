@@ -4,12 +4,12 @@ part 'Geo.g.dart';
 
 @JsonSerializable()
 class Geo {
-  String? lat;
-  String? lng;
+  final String lat;
+  final String lng;
 
   Geo({
-    this.lat,
-    this.lng,
+    required this.lat,
+    required this.lng,
   });
 
   factory Geo.fromJson(Map<String, String> json) => _$GeoFromJson(json);

@@ -7,8 +7,8 @@ part of 'Geo.dart';
 // **************************************************************************
 
 Geo _$GeoFromJson(Map<String, dynamic> json) => Geo(
-      lat: json['lat'] as String?,
-      lng: json['lng'] as String?,
+      lat: json['lat'] as String,
+      lng: json['lng'] as String,
     );
 
 Map<String, dynamic> _$GeoToJson(Geo instance) => <String, dynamic>{
